@@ -12,7 +12,6 @@ import java.util.Optional;
 @Service
 public class ProductService {
     private final ProductRepo<Product> productRepo;
-
     @Autowired
     public ProductService(ProductRepo<Product> productRepo) {
         this.productRepo = productRepo;
@@ -21,12 +20,12 @@ public class ProductService {
     public List<Product> getAllProducts() { return productRepo.findAll();}
 
     public Optional<List<Product>> getAllElectronics() { return productRepo.findByType("electronics");}
-    public Optional<List<Product>> getAllComputers() { return productRepo.findByTag("computers");}
-    public Optional<List<Product>> getAllCellPhones() { return productRepo.findByTag("cellphones");}
+    public Optional<List<Product>> getAllComputers() { return productRepo.findByTagContaining("computer");}
+    public Optional<List<Product>> getAllCellPhones() { return productRepo.findByTagContaining("cellphone");}
 
     public Optional<List<Product>> getAllClothing() { return productRepo.findByType("clothing");}
-    public Optional<List<Product>> getAllMenClothes() { return productRepo.findByTag("menclothes");}
-    public Optional<List<Product>> getAllWomenClothes() { return productRepo.findByTag("womenclothes");}
+    public Optional<List<Product>> getAllMenClothes() { return productRepo.findByTagContaining("mencloth");}
+    public Optional<List<Product>> getAllWomenClothes() { return productRepo.findByTagContaining("womencloth");}
 
     public Product getProductById(Long product_id) throws IllegalStateException {
         return productRepo.findById(product_id).orElseThrow(() -> new IllegalStateException(

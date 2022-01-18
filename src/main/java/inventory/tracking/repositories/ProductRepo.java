@@ -14,7 +14,7 @@ public interface ProductRepo<T extends Product> extends JpaRepository<T,Long> {
     Optional<List<T>> findByInventoryBetween(int lower, int upper);
     Optional<List<T>> findByPriceBetween(double lowPrice, double highPrice);
     Optional<List<T>> findByType(String type);
-    Optional<List<T>> findByTag(String tag);
+    Optional<List<T>> findByTagContaining(String tag);
     boolean existsByName(String name);
     @Transactional
     Long deleteByName(String name);

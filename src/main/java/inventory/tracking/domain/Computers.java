@@ -17,6 +17,6 @@ public class Computers extends ProductElectronics {
                       @JsonProperty("type") String type,
                       @JsonProperty("tag") String tag) {
         super(product_id,name,price,inventory,type,tag);
-        this.setTag("computers");
+        this.setTag("computer");
     }
 }

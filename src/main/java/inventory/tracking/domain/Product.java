@@ -30,6 +30,7 @@ public class Product {
     @Column(name="type")
     private String type;
 
+    @NotNull
     @Column(name="tag")
     private String tag;
 

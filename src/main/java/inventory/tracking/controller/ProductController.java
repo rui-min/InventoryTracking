@@ -77,6 +77,11 @@ public class ProductController {
     }
 
     // C, U, R methods
+    /**
+     * add a new product category object
+     * @param product: Must contain non-null "name" & "tag"; "tag" must contain one of:
+     *               "cellphone","computer","mencloth","womencloth"
+     */
     @PostMapping("/post")
     public void addNewProduct(@RequestBody Product product){
         productService.addNewProduct(product);
