@@ -83,8 +83,8 @@ public class ProductController {
      *               "cellphone","computer","mencloth","womencloth"
      */
     @PostMapping("/post")
-    public void addNewProduct(@RequestBody Product product){
-        productService.addNewProduct(product);
+    public Product addNewProduct(@RequestBody Product product){
+        return productService.addNewProduct(product);
     }
 
     @PutMapping("/put/id/{id}")

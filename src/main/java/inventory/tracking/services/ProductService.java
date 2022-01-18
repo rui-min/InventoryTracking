@@ -43,14 +43,14 @@ public class ProductService {
         return productRepo.findByInventoryBetween(lower, upper);
     }
 
-    public void addNewProduct(Product product){
+    @Transactional
+    public Product addNewProduct(Product product){
         Optional<Product> propOpt = productRepo.findByName(product.getName());
         if(propOpt.isPresent()){
             throw new IllegalStateException("Product with this name exists. ");
         }
-        productRepo.save(product);
+        return productRepo.save(product);
     }
-
 
     @Transactional
     public Product updateIdProduct(Long product_id, String name, Double price, Integer inventory,
@@ -86,6 +86,7 @@ public class ProductService {
         return product;
     }
 
+    @Transactional
     public void removeIdProduct(Long product_id) throws IllegalStateException{
         if(! productRepo.existsById(product_id)){
             throw new IllegalStateException(String.format("No product with product_id %d exists", product_id));
@@ -94,6 +95,7 @@ public class ProductService {
         
     }
 
+    @Transactional
     public void removeNameProduct(String name) throws IllegalStateException{
         if(! productRepo.existsByName(name)){
             throw new IllegalStateException(String.format("No product with name %s exists", name));
