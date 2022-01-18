@@ -7,6 +7,9 @@
 # Feature
 **Filtering based on fields/inventory count/tags/other metadata**. Please see API section "get" methods for more information. Note both id & name are unique for each row of the database table.
 
+# Attention
+This instruction is written based on Windows OS. Not sure whether other OSs can proceed smoothly.
+
 # Preparation before running
 * Get an IDE: Any IDE that can code Java, obtain Maven and Spring Framework plugins is accpetable. I use IntelliJ Ultimate: https://www.jetbrains.com/idea/download/
 * Get and Configure MySQL database: application.properties & pom.xml are configured with MySQL. Download server and workbench from: https://dev.mysql.com/downloads/. **Attention**: open the application.properties file under "/src/main/resources/" and make sure lines 3-5 conform with your local MySQL's configuration (localhost port, username, password). You can change the lines or change your local MySQL settings (do NOT change the "/tracking" part in line 3 if you want to follow below step).
@@ -16,7 +19,7 @@
 # Quick Start
 * Ensure the whole repo is cloned or downloaded and unzipped. Open as a project in your IDE and reload Maven file pom.xml. Then run _TrackingApplication.java_ under "/src/main/java/inventory/tracking/" directory.
 * Open MySQL server and MySQL workbench. Ensure MySQL database is running and sample data is imported (see above "preparation" section). If you want to create data from scratch, see applicatoin.properties file configuration. Assigned schema name is "tracking".
-* Assigned API port is localhost:8090, which can be changed in application.properties. Now open postman, and you can test all APIs in below section.
+* Assigned API port is localhost:8090, which can be changed in application.properties. Now open postman, and you can test all APIs shown in below section.
 * Below is my demonstration:
 
 ![showcase](/docs/demonstration_get3.jpg)
@@ -47,3 +50,4 @@
 4. Delete method (delete): 
     1. **localhost:8090/api/product/delete/id/{Long id}** -> delete based on id and return a message if successfully deleted
     2. **localhost:8090/api/product/delete/name/{String name}** -> delete based on unique name(name of products cannot duplicate) and return a message if successfully deleted 
+
