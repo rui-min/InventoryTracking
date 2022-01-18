@@ -33,4 +33,3 @@ build/
 .vscode/
 
 ### Manually ###
-/src/main/java/inventory/tracking/bootstrap/
