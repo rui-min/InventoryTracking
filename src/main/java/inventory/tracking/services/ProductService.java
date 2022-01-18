@@ -11,7 +11,12 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-    @Autowired private ProductRepo<Product> productRepo;
+    private final ProductRepo<Product> productRepo;
+
+    @Autowired
+    public ProductService(ProductRepo<Product> productRepo) {
+        this.productRepo = productRepo;
+    }
 
     public List<Product> getAllProducts() { return productRepo.findAll();}
 
@@ -23,11 +28,11 @@ public class ProductService {
     public Optional<List<Product>> getAllMenClothes() { return productRepo.findByTag("menclothes");}
     public Optional<List<Product>> getAllWomenClothes() { return productRepo.findByTag("womenclothes");}
 
-    public Product getProductById(Long product_id) throws Throwable {
+    public Product getProductById(Long product_id) throws IllegalStateException {
         return productRepo.findById(product_id).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with product_id %d exists", product_id))); }
 
-    public Product getProductByName(String name) throws Throwable {
+    public Product getProductByName(String name) throws IllegalStateException {
         return productRepo.findByName(name).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with name %s exists", name))); }
 
@@ -50,7 +55,7 @@ public class ProductService {
 
     @Transactional
     public Product updateIdProduct(Long product_id, String name, Double price, Integer inventory,
-                              String type, String tag) throws Throwable {
+                              String type, String tag) throws IllegalStateException {
         Product product = productRepo.findById(product_id).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with product_id %d exists", product_id)));
         if (name != null)
@@ -68,7 +73,7 @@ public class ProductService {
 
     @Transactional
     public Product updateNameProduct(String name, Double price, Integer inventory,
-                                String type, String tag) throws Throwable {
+                                String type, String tag) throws IllegalStateException {
         Product product = productRepo.findByName(name).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with name %s exists", name)));
         if (price!=null)
@@ -82,7 +87,7 @@ public class ProductService {
         return product;
     }
 
-    public void removeIdProduct(Long product_id){
+    public void removeIdProduct(Long product_id) throws IllegalStateException{
         if(! productRepo.existsById(product_id)){
             throw new IllegalStateException(String.format("No product with product_id %d exists", product_id));
         }
@@ -90,7 +95,7 @@ public class ProductService {
         
     }
 
-    public void removeNameProduct(String name){
+    public void removeNameProduct(String name) throws IllegalStateException{
         if(! productRepo.existsByName(name)){
             throw new IllegalStateException(String.format("No product with name %s exists", name));
         }

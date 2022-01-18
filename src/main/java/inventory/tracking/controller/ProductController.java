@@ -19,60 +19,60 @@ public class ProductController {
     }
 
     // GetMappings (with filter links)
-    @GetMapping("")
+    @GetMapping("/get")
     public List<Product> index() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/get/id/{id}")
-    public Product getProductById(@PathVariable("id") Long id) throws Throwable {
+    public Product getProductById(@PathVariable("id") Long id) throws IllegalStateException {
         return productService.getProductById(id);
     }
 
     @GetMapping("/get/name/{name}")
-    public Product getProductById(@PathVariable("name") String name) throws Throwable {
+    public Product getProductById(@PathVariable("name") String name) throws IllegalStateException {
         return productService.getProductByName(name);
     }
 
     @GetMapping("/get/electronics")
-    public Optional<List<Product>> getAllElectronics() throws Throwable {
+    public Optional<List<Product>> getAllElectronics() throws IllegalStateException {
         return productService.getAllElectronics();
     }
 
     @GetMapping("/get/computers")
-    public Optional<List<Product>> getAllComputers() throws Throwable {
+    public Optional<List<Product>> getAllComputers() throws IllegalStateException {
         return productService.getAllComputers();
     }
 
     @GetMapping("/get/cellphones")
-    public Optional<List<Product>> getAllCellPhones() throws Throwable {
+    public Optional<List<Product>> getAllCellPhones() throws IllegalStateException {
         return productService.getAllCellPhones();
     }
 
     @GetMapping("/get/clothing")
-    public Optional<List<Product>> getAllClothing() throws Throwable {
+    public Optional<List<Product>> getAllClothing() throws IllegalStateException {
         return productService.getAllClothing();
     }
 
     @GetMapping("/get/menclothes")
-    public Optional<List<Product>> getAllMenClothes() throws Throwable {
+    public Optional<List<Product>> getAllMenClothes() throws IllegalStateException {
         return productService.getAllMenClothes();
     }
 
     @GetMapping("/get/womenclothes")
-    public Optional<List<Product>> getAllWomenClothes() throws Throwable {
+    public Optional<List<Product>> getAllWomenClothes() throws IllegalStateException {
         return productService.getAllWomenClothes();
     }
 
     @GetMapping("/get/price")
     public Optional<List<Product>> getProductsByPrice(@RequestParam double lowPrice,
-                                                      @RequestParam double highPrice) throws Throwable {
+                                                      @RequestParam double highPrice) throws IllegalStateException {
         return productService.getProductsByPrice(lowPrice, highPrice);
     }
 
     @GetMapping("/get/inventory")
     public Optional<List<Product>> getProductsByInventory(@RequestParam int lower,
-                                                          @RequestParam int upper) throws Throwable {
+                                                          @RequestParam int upper) throws IllegalStateException {
         return productService.getProductsByInventory(lower, upper);
     }
 
@@ -83,23 +83,22 @@ public class ProductController {
     }
 
     @PutMapping("/put/id/{id}")
-    public void updateIdProduct(@PathVariable("id") Long product_id,
+    public Product updateIdProduct(@PathVariable("id") Long product_id,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) Double price,
                               @RequestParam(required = false) Integer inventory,
                               @RequestParam(required = false) String type,
-                              @RequestParam(required = false) String tag) throws Throwable {
-        productService.updateIdProduct(product_id, name, price, inventory, type, tag);
+                              @RequestParam(required = false) String tag) throws IllegalStateException {
+        return productService.updateIdProduct(product_id, name, price, inventory, type, tag);
     }
 
     @PutMapping("/put/name/{name}")
-    public void updateNameProduct(@PathVariable("name") String name,
+    public Product updateNameProduct(@PathVariable("name") String name,
                                 @RequestParam(required = false) Double price,
                                 @RequestParam(required = false) Integer inventory,
                                 @RequestParam(required = false) String type,
-                                @RequestParam(required = false) String tag) throws Throwable {
-        productService.updateNameProduct(name, price, inventory, type, tag);
-        System.out.println("updated");
+                                @RequestParam(required = false) String tag) throws IllegalStateException {
+        return productService.updateNameProduct(name, price, inventory, type, tag);
     }
 
     @DeleteMapping("/delete/id/{id}")

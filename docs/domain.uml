@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>inventory.tracking.domain</OriginalElement>
+  <nodes>
+    <node x="0.0" y="301.0">inventory.tracking.domain.CellPhones</node>
+    <node x="48.0" y="221.0">inventory.tracking.domain.ProductElectronics</node>
+    <node x="148.0" y="301.0">inventory.tracking.domain.Computers</node>
+    <node x="229.25" y="0.0">inventory.tracking.domain.Product</node>
+    <node x="374.5" y="221.0">inventory.tracking.domain.ProductClothing</node>
+    <node x="473.0" y="301.0">inventory.tracking.domain.MenClothes</node>
+    <node x="296.0" y="301.0">inventory.tracking.domain.WomenClothes</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="inventory.tracking.domain.Computers" target="inventory.tracking.domain.ProductElectronics" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="212.0" y="276.0" />
+      <point x="138.0" y="276.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="inventory.tracking.domain.ProductClothing" target="inventory.tracking.domain.Product" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="457.5" y="196.0" />
+      <point x="302.25" y="196.0" />
+      <point x="0.0" y="85.5" />
+    </edge>
+    <edge source="inventory.tracking.domain.WomenClothes" target="inventory.tracking.domain.ProductClothing" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="374.5" y="276.0" />
+      <point x="457.5" y="276.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="inventory.tracking.domain.MenClothes" target="inventory.tracking.domain.ProductClothing" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="540.5" y="276.0" />
+      <point x="457.5" y="276.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="inventory.tracking.domain.CellPhones" target="inventory.tracking.domain.ProductElectronics" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="64.0" y="276.0" />
+      <point x="138.0" y="276.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="inventory.tracking.domain.ProductElectronics" target="inventory.tracking.domain.Product" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="138.0" y="196.0" />
+      <point x="302.25" y="196.0" />
+      <point x="0.0" y="85.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="304.0" y="165.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
