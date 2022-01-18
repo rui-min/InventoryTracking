@@ -24,53 +24,53 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/get/id/{id}")
     public Product getProductById(@PathVariable("id") Long id) throws Throwable {
         return productService.getProductById(id);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/get/name/{name}")
     public Product getProductById(@PathVariable("name") String name) throws Throwable {
         return productService.getProductByName(name);
     }
 
-    @GetMapping("/electronics")
+    @GetMapping("/get/electronics")
     public Optional<List<Product>> getAllElectronics() throws Throwable {
         return productService.getAllElectronics();
     }
 
-    @GetMapping("/computers")
+    @GetMapping("/get/computers")
     public Optional<List<Product>> getAllComputers() throws Throwable {
         return productService.getAllComputers();
     }
 
-    @GetMapping("/cellphones")
+    @GetMapping("/get/cellphones")
     public Optional<List<Product>> getAllCellPhones() throws Throwable {
         return productService.getAllCellPhones();
     }
 
-    @GetMapping("/clothing")
+    @GetMapping("/get/clothing")
     public Optional<List<Product>> getAllClothing() throws Throwable {
         return productService.getAllClothing();
     }
 
-    @GetMapping("/menclothes")
+    @GetMapping("/get/menclothes")
     public Optional<List<Product>> getAllMenClothes() throws Throwable {
         return productService.getAllMenClothes();
     }
 
-    @GetMapping("/womenclothes")
+    @GetMapping("/get/womenclothes")
     public Optional<List<Product>> getAllWomenClothes() throws Throwable {
         return productService.getAllWomenClothes();
     }
 
-    @GetMapping("/price")
+    @GetMapping("/get/price")
     public Optional<List<Product>> getProductsByPrice(@RequestParam double lowPrice,
                                                       @RequestParam double highPrice) throws Throwable {
         return productService.getProductsByPrice(lowPrice, highPrice);
     }
 
-    @GetMapping("/inventory")
+    @GetMapping("/get/inventory")
     public Optional<List<Product>> getProductsByInventory(@RequestParam int lower,
                                                           @RequestParam int upper) throws Throwable {
         return productService.getProductsByInventory(lower, upper);
@@ -82,25 +82,35 @@ public class ProductController {
         productService.addNewProduct(product);
     }
 
-    @PutMapping("/put/{id}")
-    public void updateProduct(@PathVariable("id") Long product_id,
+    @PutMapping("/put/id/{id}")
+    public void updateIdProduct(@PathVariable("id") Long product_id,
                               @RequestParam(required = false) String name,
                               @RequestParam(required = false) Double price,
-                              @RequestParam(required = false) Integer inventory) throws Throwable {
-        productService.updateProduct(product_id, name, price, inventory);
+                              @RequestParam(required = false) Integer inventory,
+                              @RequestParam(required = false) String type,
+                              @RequestParam(required = false) String tag) throws Throwable {
+        productService.updateIdProduct(product_id, name, price, inventory, type, tag);
+    }
+
+    @PutMapping("/put/name/{name}")
+    public void updateNameProduct(@PathVariable("name") String name,
+                                @RequestParam(required = false) Double price,
+                                @RequestParam(required = false) Integer inventory,
+                                @RequestParam(required = false) String type,
+                                @RequestParam(required = false) String tag) throws Throwable {
+        productService.updateNameProduct(name, price, inventory, type, tag);
         System.out.println("updated");
     }
 
-    @PutMapping("/put/name")
-    public Product updateInventory(@RequestParam String name,
-                                @RequestParam Integer inventory) throws Throwable {
-        productService.updateInventory(name,inventory);
-        return productService.getProductByName(name);
+    @DeleteMapping("/delete/id/{id}")
+    public String removeProduct(@PathVariable("id") Long product_id) {
+        productService.removeIdProduct(product_id);
+        return "id: "+product_id+" deleted";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String removeProduct(@PathVariable("id") Long product_id) {
-        productService.removeProduct(product_id);
-        return "id: "+product_id+" deleted";
+    @DeleteMapping("/delete/name/{name}")
+    public String removeProduct(@PathVariable("name") String name) {
+        productService.removeNameProduct(name);
+        return "name: \""+name+"\" deleted";
     }
 }

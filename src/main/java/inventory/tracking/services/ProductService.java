@@ -47,15 +47,10 @@ public class ProductService {
         productRepo.save(product);
     }
 
-    public void removeProduct(Long product_id){
-        if(! productRepo.existsById(product_id)){
-            throw new IllegalStateException(String.format("No product with product_id %d exists", product_id));
-        }
-        productRepo.deleteById(product_id);
-    }
 
     @Transactional
-    public void updateProduct(Long product_id, String name, Double price, Integer inventory) throws Throwable {
+    public Product updateIdProduct(Long product_id, String name, Double price, Integer inventory,
+                              String type, String tag) throws Throwable {
         Product product = productRepo.findById(product_id).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with product_id %d exists", product_id)));
         if (name != null)
@@ -64,15 +59,42 @@ public class ProductService {
             product.setPrice(price);
         if (inventory != null)
             product.setInventory(inventory);
+        if (type != null)
+            product.setType(type);
+        if (tag != null)
+            product.setTag(tag);
+        return product;
     }
 
     @Transactional
-    public void updateInventory(String name, Integer inventory) throws Throwable {
+    public Product updateNameProduct(String name, Double price, Integer inventory,
+                                String type, String tag) throws Throwable {
         Product product = productRepo.findByName(name).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with name %s exists", name)));
-        if (inventory== null)
-            throw new IllegalStateException("Input inventory is null");
-        product.setInventory(inventory);
+        if (price!=null)
+            product.setPrice(price);
+        if (inventory != null)
+            product.setInventory(inventory);
+        if (type != null)
+            product.setType(type);
+        if (tag != null)
+            product.setTag(tag);
+        return product;
     }
 
+    public void removeIdProduct(Long product_id){
+        if(! productRepo.existsById(product_id)){
+            throw new IllegalStateException(String.format("No product with product_id %d exists", product_id));
+        }
+        productRepo.deleteById(product_id);
+        
+    }
+
+    public void removeNameProduct(String name){
+        if(! productRepo.existsByName(name)){
+            throw new IllegalStateException(String.format("No product with name %s exists", name));
+        }
+        productRepo.deleteByName(name);
+
+    }
 }
