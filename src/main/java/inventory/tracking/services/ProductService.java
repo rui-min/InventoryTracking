@@ -66,6 +66,7 @@ public class ProductService {
             product.setInventory(inventory);
     }
 
+    @Transactional
     public void updateInventory(String name, Integer inventory) throws Throwable {
         Product product = productRepo.findByName(name).orElseThrow(() -> new IllegalStateException(
                 String.format("No product with name %s exists", name)));
