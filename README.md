@@ -5,7 +5,7 @@
 ![showcase](/docs/domain.jpg)
 
 # Feature
-**Filtering based on fields/inventory count/tags/other metadata**. Please see API section "get" methods for more information.
+**Filtering based on fields/inventory count/tags/other metadata**. Please see API section "get" methods for more information. Note both id & name are unique for each row of the database table.
 
 # Preparation before running
 * Get an IDE: Any IDE that can code Java, obtain Maven and Spring Framework plugins is accpetable. I use IntelliJ Ultimate: https://www.jetbrains.com/idea/download/
@@ -22,12 +22,12 @@
 ![showcase](/docs/demonstration_get3.jpg)
 
 # APIs
-**You can copy & paste the bold links below to Postman url section. Make sure to replace all fields wrapped with "{}" with values in proper types**. 
-The backend controller provides following APIs:
+**You can copy & paste the bold links below to Postman url section. Remember to switch to correct method section in the dropdown menu. Also make sure to replace all url portions wrapped with "{}" with values in proper types. The italic parts in some urls are optional(put methods only).** 
+
 1. Get method (read): 
-    1. **localhost:8090/api/product/get**  -> return all products' JSON data from the database
-    2. **localhost:8090/api/product/get/id/{Long id}** -> return the specified id product's JSON data from the database
-    3. **localhost:8090/api/product/get/name/{String name}** -> return the specified name product's JSON data from the database
+    1. **localhost:8090/api/product/get**  -> return all products' JSON data from the database.
+    2. **localhost:8090/api/product/get/id/{Long id}** -> return the specified id product's JSON data from the database.
+    3. **localhost:8090/api/product/get/name/{String name}** -> return the specified name product's JSON data from the database(name cannot duplicate).
     4. **localhost:8090/api/product/get/electronics** -> return eletronics type products' JSON data from the database.
     5. **localhost:8090/api/product/get/computers** -> return computers tagged products' JSON data from the database.
     6. **localhost:8090/api/product/get/cellphones** -> return cellphones tagged products' JSON data from the database.
@@ -37,12 +37,12 @@ The backend controller provides following APIs:
     10. **localhost:8090/api/product/get/price?lowPrice={double lowPrice}&highPrice={double highPrice}** -> return all products' JSON data falling within the price range from the database.
     11. **localhost:8090/api/product/get/inventory?lower={int lower}&higher={int higher}** -> return all products' JSON data falling within the inventory range from the database.
 2. Post method (create): 
-    1. **localhost:8090/api/product/post**  -> return all products' JSON data in the database. Please provide a JSON body in Postman such as:     
+    1. **localhost:8090/api/product/post**  -> add a new record to the database and return it. Please provide a JSON body in Postman such as:     
     {"name": "Pixel6", "price": 500.0, "inventory": 999, "type": "electronics", "tag": "cellphone", "id": null}
     
 3. Put method (update): 
-    1. **localhost:8090/api/product/put/id/{Long id}**  -> return all products' JSON data in the database
-    2. **localhost:8090/api/product/put/name/{name}**
+    1. **localhost:8090/api/product/put/id/{Long id}_?name={String name}&price={Double price}&inventory={Integer inventory}&type={String type}&tag={String tag}_** -> update the specified id product's fields in the database. The to-be-updated attributes are selective and optional(shown as italic).
+    2. **localhost:8090/api/product/put/name/{String name}_?price={Double price}&inventory={Integer inventory}&type={String type}&tag={String tag}_** -> update the specified name product's fields in the database. The to-be-updated attributes are selective and optional(shown as italic).
 
 4. Delete method (delete): 
     1. **localhost:8090/api/product/delete/id/{Long id}** -> delete based on id and return a message if successfully deleted
