@@ -51,3 +51,5 @@ This instruction is written based on Windows OS. Not sure whether other OSs can 
     1. **localhost:8090/api/product/delete/id/{Long id}** -> delete based on id and return a message if successfully deleted
     2. **localhost:8090/api/product/delete/name/{String name}** -> delete based on unique name(name of products cannot duplicate) and return a message if successfully deleted 
 
+# About BootStrapData.java
+File BootStrapData.java under "/src/main/java/inventory/tracking/bootstrap" is used for constructing sample database data. You can uncomment the whole file and rerun the project if more data are needed.
