@@ -7,6 +7,9 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Domain root class. The single table is declared here.
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="p_type")

@@ -8,6 +8,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Spring Data repository managing domain classes and providing methods
+ * @param <T> generic types sub of Product
+ */
 @Repository
 public interface ProductRepo<T extends Product> extends JpaRepository<T,Long> {
     Optional<T> findByName(String name);

@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
+/**
+ * Level 2 domain abstract class
+ */
 @Entity
 public abstract class ProductClothing extends Product{
     protected ProductClothing() {}

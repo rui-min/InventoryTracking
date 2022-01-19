@@ -9,6 +9,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Business logic
+ */
 @Service
 public class ProductService {
     private final ProductRepo<Product> productRepo;

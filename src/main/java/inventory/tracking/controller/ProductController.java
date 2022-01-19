@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Spring backend REST controller interacts with requests and data
+ */
 @RestController
 @RequestMapping(path="api/product")
 public class ProductController {

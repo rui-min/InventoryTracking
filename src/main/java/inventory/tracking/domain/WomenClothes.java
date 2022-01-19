@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
-
+/**
+ * Level 3 domain concrete class
+ */
 @Entity
 public class WomenClothes extends ProductClothing {
     protected WomenClothes() {
