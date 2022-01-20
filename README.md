@@ -2,7 +2,7 @@
  * This is an inventory tracking web application (backend) for a logistics company with CRUD operations. Built with Java, Maven, Spring Boot, Spring Data, Spring Web, Hibernate and MySQL.
  * There are totally 7 classes in the domain directory(/src/main/java/inventory/tracking/domain/), forming a single inheritance tree(see below graph). The backend server provides RESTful APIs to the frontend. Domain classes can be added in future maintenance.
  
-![showcase](/docs/domain.jpg)
+![showcase1](/docs/domain.jpg)
 
 # Feature
 **Filtering based on fields/inventory count/tags/other metadata**. Please see API section "get" methods for more information. Note both id & name are unique for each row of the database table.
@@ -13,7 +13,9 @@ This instruction is written based on Windows OS. Not sure whether other OSs can 
 # Preparation before running
 * Get an IDE: Any IDE that can code Java, obtain Maven and Spring Framework plugins is accpetable. I use IntelliJ Ultimate: https://www.jetbrains.com/idea/download/
 * Get and Configure MySQL database: application.properties & pom.xml are configured with MySQL. Download server and workbench from: https://dev.mysql.com/downloads/. **Attention**: open the application.properties file under "/src/main/resources/" and make sure lines 3-5 conform with your local MySQL's configuration (localhost port, username, password). You can change the lines or change your local MySQL settings (do NOT change the "/tracking" part in line 3 if you want to follow below step).
-* Import sample MySQL database file: for testing purpose, a sample .sql file "/docs/exampleData.sql" can be imported with MySQL workbench. Note the schema name is "tracking", which is configured in line 3 of application.properties.
+* Import sample MySQL database file: for testing purpose, a sample .sql file "/docs/exampleData.sql" can be imported with MySQL workbench(see below import picture). Note the schema name is "tracking", which is configured in line 3 of application.properties.
+
+![showcase2](/docs/demonstration_import.jpg)
 * Get Postman for testing APIs: download Postman from https://www.postman.com/downloads/. Need to create an account or login.
 
 # Quick Start
